@@ -1,0 +1,10 @@
+[project]
+name = "what-to-watch"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "flask==3.0.2",
+    "python-dotenv==1.0.1",
+]

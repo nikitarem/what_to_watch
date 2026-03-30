@@ -9,6 +9,9 @@ __pycache__/
 # Static
 static/
 
+# Database
+opinions.csv
+
 # Distribution / packaging
 .Python
 build/

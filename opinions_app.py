@@ -1,10 +1,10 @@
 from datetime import datetime
 from random import randrange
 
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 # Конфигурация
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
@@ -26,10 +26,14 @@ def index_view():
     quantity = Opinion.query.count()
     if not quantity:
         return 'В базе данных мнений о фильмах нет.'
-
     offset_value = randrange(quantity)
     opinion = Opinion.query.offset(offset_value).first()
-    return opinion.text
+    # Вот он — возврат функции.
+    return render_template('index.html', opinion=opinion)
+
+@app.route('/add')
+def add_opinion_view():
+    return 'Страница в разработке'
 
 if __name__ == '__main__':
     app.run()

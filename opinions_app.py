@@ -10,6 +10,8 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 db = SQLAlchemy(app)
 
+app.json.ensure_ascii = False
+
 # Модели
 class Opinion(db.Model):
     id = db.Column(db.Integer, primary_key=True)
